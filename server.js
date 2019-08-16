@@ -1,6 +1,6 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const express = require("express"); // handle routing and requests
+const mongoose = require("mongoose"); // interact with MongoDB
+const bodyParser = require("body-parser"); // parse incoming request bodies
 const app = express();
 
 // Bodyparser middleware
