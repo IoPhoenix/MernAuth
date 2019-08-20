@@ -25,7 +25,7 @@ class Login extends Component {
     static getDerivedStateFromProps(props, state) {
 
         if (props.auth.isAuthenticated) {
-            this.props.history.push("/dashboard"); // redirect user to dashboard after login
+            props.history.push("/dashboard"); // redirect user to dashboard after login
         }
 
         if (props.errors) {

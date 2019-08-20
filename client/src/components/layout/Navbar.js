@@ -1,6 +1,18 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
+
 class Navbar extends Component {
+
+  componentDidMount() {
+    
+    // If logged in, redirect to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     return (
       <div className="navbar-fixed">
@@ -22,4 +34,13 @@ class Navbar extends Component {
     );
   }
 }
-export default Navbar;
+
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps
+)(withRouter(Navbar));
