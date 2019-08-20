@@ -8,7 +8,7 @@ export const registerUser = (userData, history) => dispatch => {
     axios
         .post('/api/users/register', userData)
         .then(res => console.log('response from server: ', res))
-        .then(res => history.push('/dashboard'))
+        .then(res => history.push('/login'))
         .catch(err =>
             dispatch({
                 type: GET_ERRORS,

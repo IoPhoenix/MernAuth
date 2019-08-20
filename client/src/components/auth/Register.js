@@ -20,19 +20,25 @@ class Register extends Component {
     componentDidMount() {
         // If logged in, redirect to dashboard
         if (this.props.auth.isAuthenticated) {
-          this.props.history.push("/dashboard");
+            this.props.history.push("/dashboard");
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('nextProps: ', nextProps);
-        console.log('errors: ', nextProps.errors);
-        
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
+    static getDerivedStateFromProps(props, state) {
+
+        if (props.auth.isAuthenticated) {
+            props.history.push("/dashboard"); // redirect user to dashboard after registration
         }
+
+
+        if (props.errors) {
+            return {
+                errors: props.errors
+            };
+        }
+
+        // Return null to indicate no change to state.
+        return null;
     }
 
     onChange = e => {
